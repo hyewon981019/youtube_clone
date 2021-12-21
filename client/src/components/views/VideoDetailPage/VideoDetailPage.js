@@ -28,7 +28,7 @@ import Comment from './Section/Comment';
             Axios.post('/api/comment/getComments', variable) //비디오아이디를 넣어주면 해당 댓글 다 가져옴
             .then(response => {
                 if(response.data.success)
-                {// ok
+                {
                     // console.log(response.data.comments)
                     setComments(response.data.comments)
 
@@ -48,7 +48,8 @@ import Comment from './Section/Comment';
     if(VideoDetail.writer)
     {
 
-        const subscribeButton = VideoDetail.writer._id !== localStorage.getItem('userId') && <Subscribe userTo = {VideoDetail.writer._id} userFrom = {localStorage.getItem('userId')}/>;
+        const subscribeButton = VideoDetail.writer._id !== localStorage.getItem('userId') && 
+        <Subscribe userTo = {VideoDetail.writer._id} userFrom = {localStorage.getItem('userId')}/>;
         return (
             <Row gutter = {[16,16]}>
                 <Col lg={18} xs={24}>
@@ -68,7 +69,6 @@ import Comment from './Section/Comment';
 
                         {/* comments */}
                         <Comment refreshFunction={refreshFunction} commentLists = {Comments} postId = {videoId}/> 
-                        {/* refreshFunction */}
                     </div>
 
                 </Col>

@@ -20,7 +20,7 @@ router.post('/saveComment', (req, res) => {
     comment.save((err, comment) => {
         if(err) return res.json({success : false, err})
 
-        Comment.find({'_id' : comment._id} ) //코멘트 모델을 가져와 찾음 ?
+        Comment.find({'_id' : comment._id} ) //코멘트 모델을 가져와 찾음 
             .populate('writer')
             .exec((err, result) => {
                 if(err) return res.json({success : false, err})

@@ -28,7 +28,7 @@ function App() {
           {/* 로그인 한 사용자만 */}
         </Switch>
       </div>
-      <Footer />
+      {/* <Footer /> */}
     </Suspense>
   );
 }

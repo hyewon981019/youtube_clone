@@ -18,7 +18,7 @@ export default function SideVideo() {
             })
     }, [])
 
-    const renderSideVideo = sideVideos.map((video, index) => { //어떻게 리턴이 가능하지?
+    const renderSideVideo = sideVideos.map((video, index) => { 
 
         var minutes = Math.floor(video.duration / 60);
         var seconds = Math.floor((video.duration - minutes *60));
@@ -41,9 +41,6 @@ export default function SideVideo() {
     </div>
 
     })
-
-
-
 
     return (
 

@@ -22,7 +22,9 @@ const CategoryOptions = [
 
 function VideoUploadPage(props) {
 
-    const user = useSelector(state => state.user); //state에 가서 user를 가져옴, user 정보 다 담김
+    const user = useSelector(state => state.user); 
+    
+
     const [VideoTitle, setVideoTitle] = useState("")
     const [Description, setDescription] = useState("")
     const [Private, setPrivate] = useState(0) //private : 0
@@ -137,7 +139,7 @@ function VideoUploadPage(props) {
             <Form onSubmit = {onSubmit}>
                 <div style={{display : 'flex', justifyContent : 'space-between'}}>
                     <Dropzone
-                    onDrop={onDrop} //
+                    onDrop={onDrop} 
                     multiple={false}
                     maxSize={100000000}>
                         {({getRootProps, getInputProps}) => (

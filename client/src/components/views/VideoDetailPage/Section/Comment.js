@@ -2,10 +2,10 @@ import Axios from 'axios'
 import React, {useState} from 'react'
 import { useSelector } from 'react-redux'
 import SingleComment from './SingleComment';
+import ReplyComment from './ReplyComment';
 export default function Comment(props) {
 
     const videoId = props.postId;
-    // const variable = {videoId : videoId}
 
     const user = useSelector(state => state.user);
 
@@ -30,7 +30,7 @@ export default function Comment(props) {
         Axios.post('/api/comment/saveComment', variables)
         .then(response => {
             if(response.data.success)
-            {//ok
+            {
                 console.log(response.data.result)
                 setCommentValue("") //다시 댓글은 빈 상태
                 props.refreshFunction(response.data.result)
@@ -50,7 +50,14 @@ export default function Comment(props) {
             <hr/>
 
             {props.commentLists && props.commentLists.map((comment, index) => ( //deps 차이 반영하여 찍어내기
-                (!comment.responseTo && <SingleComment refreshFunction={props.refreshFunction} comment = {comment} postId = {videoId}/>) //윗댓글이 없는 애들만 찍어내기 
+                (!comment.responseTo && 
+                <React.Fragment>
+                    <SingleComment refreshFunction={props.refreshFunction} 
+                    comment = {comment} postId = {videoId}/>
+                    {/* <ReplyComment /> */}
+                </React.Fragment>
+                
+                ) 
                 
             ))}
             

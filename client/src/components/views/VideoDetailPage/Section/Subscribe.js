@@ -24,14 +24,14 @@ export default function Subscribe(props) {
                     }
                 })
 
-                let subscribedVariable = { userTo : props.userTo, userFrom : localStorage.getItem('userId')} //현재 접속한 아이디를 로컬스토리지에 저장했고, userFrom에 넣음
+        let subscribedVariable = { userTo : props.userTo, userFrom : localStorage.getItem('userId')} //현재 접속한 아이디를 로컬스토리지에 저장했고, userFrom에 넣음
 
         Axios.post('/api/subscribe/subscribed', subscribedVariable)
             .then(response =>
                 {
                     if(response.data.success)
                     {
-                        setSubscribed(response.data.subscrbed)
+                        setSubscribed(response.data.subscribed)
 
                     }
                     else
@@ -47,7 +47,6 @@ export default function Subscribe(props) {
             userTo : props.userTo,
             userFrom : props.userFrom
         }
-        //이미 구독중이라면,
         if(Subscribed)
         {
             Axios.post('/api/subscribe/unSubscribe', subScribeVariable)
@@ -88,7 +87,7 @@ export default function Subscribe(props) {
             <button
                 style={{backgroundColor :  `${Subscribed ? '#AAAAAA' : '#CC0000'}`, borderRadius : '4px',
                 color : 'white', padding : '10px 16px',
-                fontWeight : '500', fontSize :'1rem', textTransform : 'uppercase'
+                fontWeight : '500', fontSize :'1rem', textTransform : 'uppercase', border : 'none'
             }}
                 onClick={onSubscribe}>
                 {SubscribeNumber} {Subscribed ? 'Subscribed' : 'Subscribe'}
